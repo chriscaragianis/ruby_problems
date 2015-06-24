@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
+require 'minitest/benchmark'
 
 require 'prime'
 ERROR_MESSAGE = <<-MSG
@@ -8,6 +9,7 @@ Using Ruby's Prime class is probably the best way to do this in a
 'real' application; but this is an exercise, not a real application,
 so you're expected to implement this yourself.
 MSG
+
 
 class Prime
   [:each, :new, :prime?, :take].each do |m|
@@ -24,7 +26,9 @@ end
 require_relative 'nth_prime'
 
 class TestPrimes < Minitest::Test
+  
   def test_first
+    skip
     assert_equal 2, Prime.nth(1)
   end
 
